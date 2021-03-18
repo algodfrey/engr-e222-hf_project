@@ -7,7 +7,7 @@ import connexion
 app = connexion.App(__name__, specification_dir="./")
 
 # Read the yaml file to configure the endpoints
-app.add_api("algodfrey-My_API-0.0-oas3-resolved.yaml")
+app.add_api("my_master_spec.yaml")
 
 # create a URL route in our application for "/"
 @app.route("/")
