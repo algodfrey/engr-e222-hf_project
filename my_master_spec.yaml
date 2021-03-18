@@ -1,0 +1,166 @@
+---
+openapi: 3.0.0
+info:
+  title: Heart Failure Prediction Service
+  description: A service that predicts whether one will die from heart failure.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Allie Godfrey
+  license:
+    name: Apache
+  version: 0.0-oas3
+servers:
+- url: http://localhost:8080/heart-failure-prediction
+paths:
+  ? /hf_pred/{age}/{anemia}/{creatinine_phosphokinase}/{diabetes}/{ejection_fraction}/{high_blood_pressure}/{platelets}/{serum_creatinine}/{serum_sodium}/{sex}/{smoking}/{time}
+  : get:
+      tags:
+      - hf_pred
+      description: Returns prediction of whether one will die from heart failure or not based on given parameters.
+      operationId: hf_pred.prediction
+      parameters:
+      - name: age
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: anemia
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: creatinine_phosphokinase
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: diabetes
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: ejection_fraction
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: high_blood_pressure
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: platelets
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: serum_creatinine
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: serum_sodium
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: sex
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: smoking
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: time
+        in: path
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          type: array
+          items:
+            type: number
+      - name: metadata
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: Here is your prediction!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HFR'
+        "400":
+          description: Invalid input
+components:
+  schemas:
+    HFR:
+      required:
+      - model
+      type: object
+      properties:
+        model:
+          type: string
