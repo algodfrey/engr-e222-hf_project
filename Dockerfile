@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Allie Godfreys <algodfre@iu.edu>
+MAINTAINER Allie Godfrey <algodfre@iu.edu>
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
