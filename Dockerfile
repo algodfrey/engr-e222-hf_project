@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Tyler Balson <tbalson@iu.edu>
+MAINTAINER Allie Godfreys <algodfre@iu.edu>
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
@@ -34,6 +34,7 @@ COPY . /cpu_test
 
 EXPOSE 8080
 
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
-CMD ["make", "start"]
+#CMD ["make", "start"]
+CMD ["bash"]
