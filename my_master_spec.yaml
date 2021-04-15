@@ -10,151 +10,32 @@ info:
     name: Apache
   version: 0.0-oas3
 servers:
-- url: http://localhost:8080/heart-failure-prediction
+- url: http://localhost:8080/hf
 paths:
-  ? /hf_pred/{age}/{anemia}/{creatinine_phosphokinase}/{diabetes}/{ejection_fraction}/{high_blood_pressure}/{platelets}/{serum_creatinine}/{serum_sodium}/{sex}/{smoking}/{time}
-  : get:
+  /predict/{parameters}:
+    get:
       tags:
-      - hf_pred
-      description: Returns prediction of whether one will die from heart failure or not based on given parameters.
+        - SUM
       operationId: hf_pred.prediction
+      description: Prediction
       parameters:
-      - name: age
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: anemia
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: creatinine_phosphokinase
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: diabetes
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: ejection_fraction
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: high_blood_pressure
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: platelets
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: serum_creatinine
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: serum_sodium
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: sex
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: smoking
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: time
-        in: path
-        required: true
-        style: simple
-        explode: true
-        schema:
-          minItems: 1
-          type: array
-          items:
-            type: number
-      - name: metadata
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
+        - in: path
+          name: parameters
+          required: true
+          schema:
+            type: array
+            items:
+              type: number
+            minItems: 1
+          style: simple
+          explode: true
+        - in: query
+          name: metadata
+          schema:
+            type: boolean
       responses:
-        "200":
-          description: Here is your prediction!
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HFR'
-        "400":
-          description: Invalid input
+        '200':
+          description: 'CPU info, or add more text'
 components:
   schemas:
     HFR:

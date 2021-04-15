@@ -34,7 +34,6 @@ COPY . /cpu_test
 
 EXPOSE 8080
 
-#RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-#CMD ["make", "start"]
-CMD ["bash"]
+CMD ["make", "start"]
